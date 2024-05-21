@@ -1,0 +1,16 @@
+@hostname=localhost
+@port=4000
+
+GET http://{{hostname}}:{{port}}/api/products
+
+###
+
+POST http://{{hostname}}:{{port}}/api/products
+
+###
+
+PUT http://{{hostname}}:{{port}}/api/products
+
+###
+
+DELETE http://{{hostname}}:{{port}}/api/products
