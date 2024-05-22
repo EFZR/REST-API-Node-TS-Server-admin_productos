@@ -5,30 +5,38 @@ import db from "./config/db";
 
 const server = express()
 
-//#region config. de servidor
+//#region Configuración del servidor
 
-// Conexion a base de datos.
+// Establecer conexión con la base de datos
 async function connectDb() {
   try {
     await db.authenticate()
-    db.sync()
-    console.log(colors.cyan.bold("Conexion exitosa a la base de datos"));
+    await db.sync()
+    // Mensaje de éxito en la conexión
+    // console.log(colors.cyan.bold("Conexión exitosa a la base de datos"));
   } catch (error) {
-    console.log(error);
+    // Mensaje de error en la conexión
     console.log(colors.red("Hubo un error al conectar a la base de datos."));
   }
 }
 
+// Iniciar la conexión con la base de datos
 connectDb()
 
-// Lectura de datos de body.
+// Configurar el servidor para leer datos JSON del cuerpo de las solicitudes
 server.use(express.json())
 
 //#endregion
 
-//#region Routes
+//#region Rutas
 
+// Usar el router para las rutas de los productos
 server.use("/api/products", router)
+
+// Ruta de prueba para verificar que la API está funcionando
+server.get("/api", (req, res) => {
+  res.json({ msg: "Desde API" })
+})
 
 //#endregion
 

@@ -6,7 +6,7 @@ Content-Type: application/json
 
 {
   "name": "monitor",
-  "price": 300
+  "price": "hola"
 }
 
 ###
@@ -34,4 +34,4 @@ PATCH http://{{hostname}}:{{port}}/api/products/11
 
 ###
 
-DELETE http://{{hostname}}:{{port}}/api/products
+DELETE http://{{hostname}}:{{port}}/api/products/80
