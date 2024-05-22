@@ -1,15 +1,36 @@
 @hostname=localhost
-@port=4000
+@port=3000
+
+POST http://{{hostname}}:{{port}}/api/products
+Content-Type: application/json
+
+{
+  "name": "monitor",
+  "price": 300
+}
+
+###
 
 GET http://{{hostname}}:{{port}}/api/products
 
 ###
 
-POST http://{{hostname}}:{{port}}/api/products
+GET http://{{hostname}}:{{port}}/api/products/8
 
 ###
 
-PUT http://{{hostname}}:{{port}}/api/products
+PUT http://{{hostname}}:{{port}}/api/products/11
+Content-Type: application/json
+
+{
+  "name": "monitor",
+  "price": 300,
+  "availability": false
+}
+
+###
+
+PATCH http://{{hostname}}:{{port}}/api/products/11
 
 ###
 
