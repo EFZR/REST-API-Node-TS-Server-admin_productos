@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "nodemon --exec ts-node ./src/index.ts",
     "test": "jest --detectOpenHandles",
-    "db": "ts-node ./src/data --clear",
-    "posttest": "ts-node ./src/data --clear"
+    "pretest": "ts-node ./src/data --clear",
+    "test:coverage": "npm run pretest && jest --detectOpenHandles --coverage",
+    "db": "ts-node ./src/data --clear"
   },
   "author": "Emerson Fernando Zapata Rivas",
   "license": "ISC",

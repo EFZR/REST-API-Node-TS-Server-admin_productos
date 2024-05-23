@@ -8,7 +8,7 @@ const server = express()
 //#region Configuración del servidor
 
 // Establecer conexión con la base de datos
-async function connectDb() {
+export async function connectDb() {
   try {
     await db.authenticate()
     await db.sync()

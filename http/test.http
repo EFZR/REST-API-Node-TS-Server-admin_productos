@@ -6,7 +6,7 @@ Content-Type: application/json
 
 {
   "name": "monitor",
-  "price": "hola"
+  "price": "500"
 }
 
 ###
@@ -15,11 +15,11 @@ GET http://{{hostname}}:{{port}}/api/products
 
 ###
 
-GET http://{{hostname}}:{{port}}/api/products/8
+GET http://{{hostname}}:{{port}}/api/products/1
 
 ###
 
-PUT http://{{hostname}}:{{port}}/api/products/11
+PUT http://{{hostname}}:{{port}}/api/products/1
 Content-Type: application/json
 
 {
@@ -30,8 +30,8 @@ Content-Type: application/json
 
 ###
 
-PATCH http://{{hostname}}:{{port}}/api/products/11
+PATCH http://{{hostname}}:{{port}}/api/products/2
 
 ###
 
-DELETE http://{{hostname}}:{{port}}/api/products/80
+DELETE http://{{hostname}}:{{port}}/api/products/1
