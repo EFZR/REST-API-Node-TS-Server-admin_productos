@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import colors from "colors";
 import Product from "../models/Product.model";
 
 export async function createProduct(req: Request, res: Response) {

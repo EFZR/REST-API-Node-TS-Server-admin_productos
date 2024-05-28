@@ -1,4 +1,5 @@
 import swaggerJSDoc from "swagger-jsdoc";
+import { SwaggerUIOptions } from "swagger-ui";
 
 const options: swaggerJSDoc.Options = {
   swaggerDefinition: {
@@ -6,19 +7,18 @@ const options: swaggerJSDoc.Options = {
     tags: [
       {
         name: "Products",
-        description: "API operations related to products"
-      }
+        description: "API operations related to products",
+      },
     ],
     info: {
       title: "REST API Node.js / Express / Typescript",
       version: "1.0.0",
-      description: "API Docs for products."
-    }
+      description: "API Docs for products.",
+    },
   },
-  apis: [
-    "./src/router.ts"
-  ]
-}
+  apis: ["./src/router.ts"],
+};
 
-const swaggerSpec = swaggerJSDoc(options)
-export default swaggerSpec
+const swaggerSpec = swaggerJSDoc(options);
+
+export default swaggerSpec;
