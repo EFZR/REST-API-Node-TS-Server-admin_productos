@@ -1,19 +1,20 @@
 import express from "express";
 import colors from "colors";
+import cors, { CorsOptions } from "cors";
 import swaggerUI from "swagger-ui-express";
 import swaggerSpec from "./config/swagger";
 import router from "./router";
 import db from "./config/db";
 
-const server = express()
+const server = express();
 
 //#region Configuración del servidor
 
 // Establecer conexión con la base de datos
 export async function connectDb() {
   try {
-    await db.authenticate()
-    await db.sync()
+    await db.authenticate();
+    await db.sync();
     // Mensaje de éxito en la conexión
     // console.log(colors.cyan.bold("Conexión exitosa a la base de datos"));
   } catch (error) {
@@ -23,26 +24,40 @@ export async function connectDb() {
 }
 
 // Iniciar la conexión con la base de datos
-connectDb()
+connectDb();
 
 // Configurar el servidor para leer datos JSON del cuerpo de las solicitudes
-server.use(express.json())
+server.use(express.json());
+
+// Permitir conexiones CORS
+
+const corsOptions: CorsOptions = {
+  origin: function (origin, callback) {
+    if (origin === process.env.FRONTEND_URL) {
+      callback(null, true);
+    } else {
+      callback(new Error("Error de CORS"));
+    }
+  },
+};
+
+server.use(cors(corsOptions));
 
 //#endregion
 
 //#region Rutas
 
 // Usar el router para las rutas de los productos
-server.use("/api/products", router)
+server.use("/api/products", router);
 
 // Ruta de prueba para verificar que la API está funcionando
 server.get("/api", (req, res) => {
-  res.json({ msg: "Desde API" })
-})
+  res.json({ msg: "Desde API" });
+});
 
 // Docs
-server.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec))
+server.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 //#endregion
 
-export default server
+export default server;
