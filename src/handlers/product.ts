@@ -8,7 +8,7 @@ export async function createProduct(req: Request, res: Response) {
 
 export async function getProducts(req: Request, res: Response) {
   const products: Product[] = await Product.findAll({
-    attributes: { exclude: ['createdAt', 'updatedAt', 'availability'] }
+    attributes: { exclude: ['createdAt', 'updatedAt'] }
   })
   res.json({ data: products })
 }

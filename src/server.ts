@@ -1,6 +1,7 @@
 import express from "express";
 import colors from "colors";
 import cors, { CorsOptions } from "cors";
+import morgan from "morgan";
 import swaggerUI from "swagger-ui-express";
 import swaggerSpec from "./config/swagger";
 import router from "./router";
@@ -42,6 +43,8 @@ const corsOptions: CorsOptions = {
 };
 
 server.use(cors(corsOptions));
+
+server.use(morgan("dev"))
 
 //#endregion
 
